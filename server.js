@@ -8,6 +8,8 @@ let requestedDaily = []
 let seed = ''
 let date = ''
 
+app.set('trust proxy', true)
+
 app.use(
   cors({
     origin: '*',
