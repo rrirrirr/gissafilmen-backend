@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "run": "node server.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
