@@ -51,7 +51,7 @@ app.post('/score', (req, res) => {
       res.status(403).send({ error: 'Forbidden' })
       return
     }
-    highScoreList.push({ name: score.name, score: score.score })
+    highScoreList.push({ name: data.name, score: data.score })
     res.send(JSON.stringify(highScoreList))
   } catch (error) {
     console.log(error)
