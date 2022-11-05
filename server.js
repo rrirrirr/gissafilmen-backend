@@ -46,6 +46,7 @@ app.get('/score', async (req, res) => {
 app.post('/score', (req, res) => {
   try {
     const data = req.body
+    console.log(data)
     if (data?.seed !== seed) {
       res.status(403).send({ error: 'Forbidden' })
       return
