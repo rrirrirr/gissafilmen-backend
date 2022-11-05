@@ -16,15 +16,15 @@ app.use(
   })
 )
 
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get('/dailyseed', async (req, res) => {
   console.log(req.ip)
-  if (requestedDaily.find(ip => ip === req.ip)) {
-    res.send(JSON.stringify('no'))
-    return
-  }
+  // if (requestedDaily.find(ip => ip === req.ip)) {
+    // res.send(JSON.stringify('no'))
+    // return
+  // }
   try {
     res.send(JSON.stringify(seed))
     requestedDaily.push(req.ip)
@@ -50,7 +50,7 @@ app.post('/score', (req, res) => {
       res.status(403).send({ error: 'Forbidden' })
       return
     }
-    highScoreList.push({name: score.name, score: score.score})
+    highScoreList.push({ name: score.name, score: score.score })
     res.send(JSON.stringify(highScoreList))
   } catch (error) {
     console.log(error)
