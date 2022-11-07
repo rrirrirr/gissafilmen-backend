@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3000
 let highScoreList = []
-let requestedDaily = []
+let requestedDaily = new Set()
 let seed = ''
 let date = ''
 
@@ -21,13 +21,13 @@ app.use(bodyParser.json());
 
 app.get('/dailyseed', async (req, res) => {
   console.log(req.ip)
-  if (requestedDaily.find(ip => ip === req.ip)) {
+  if (requestedDaily.has(req.ip)) {
     res.send(JSON.stringify('no'))
     return
   }
   try {
     res.send(JSON.stringify(seed))
-    requestedDaily.push(req.ip)
+    requestedDaily.add(req.ip)
   } catch (error) {
     console.log(error)
     res.status(500).send({ error: 'Something failed!' })
@@ -67,7 +67,7 @@ const dailyUpdate = () => {
     console.log(`new seed: ${seed} - ${today}`)
     date = today
     highScoreList = []
-    requestedDaily = []
+    requestedDaily = new Set()
   }
 }
 
