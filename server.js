@@ -21,10 +21,10 @@ app.use(bodyParser.json());
 
 app.get('/dailyseed', async (req, res) => {
   console.log(req.ip)
-  if (requestedDaily.has(req.ip)) {
-    res.send(JSON.stringify('no'))
-    return
-  }
+  // if (requestedDaily.has(req.ip)) {
+  //   res.send(JSON.stringify('no'))
+  //   return
+  // }
   try {
     res.send(JSON.stringify(seed))
     requestedDaily.add(req.ip)
